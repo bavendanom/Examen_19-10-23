@@ -57,12 +57,12 @@ void HAL_UART_RxCpltCallback (UART_HandleTypeDef *huart) //Reconoce cuando la re
 		Tx_Buffer[i] = Rx_Buffer[i];
 	}
 	int data1 = Tx_Buffer[0] - 48;
-	int data2 = Tx_Buffer[1] - 48;
+	int data2 = Tx_Buffer[1] - 48; // resta del numero
 
 
-	HAL_UART_Transmit(&huart2, Tx_Buffer, strlen((char*)Tx_Buffer), 1000); // Cuando reciba los 8 bits trasmite nuestro mensaje
+	HAL_UART_Transmit(&huart2, Tx_Buffer, strlen((char*)Tx_Buffer), 1000); // Cuando reciba los 2 bits trasmite nuestro mensaje
 
-	htim2.Instance->CCR2 = 15000;
+	htim2.Instance->CCR2 = 15000; // configuracion del PWM
 	HAL_Delay(100);
 
 }

@@ -403,14 +403,14 @@ void HAL_UART_RxCpltCallback (UART_HandleTypeDef *huart) //Reconoce cuando la re
  800050c:	781b      	ldrb	r3, [r3, #0]
  800050e:	3b30      	subs	r3, #48	; 0x30
  8000510:	613b      	str	r3, [r7, #16]
-	int data2 = Tx_Buffer[1] - 48;
+	int data2 = Tx_Buffer[1] - 48; // resta del numero
  8000512:	4b0f      	ldr	r3, [pc, #60]	; (8000550 <HAL_UART_RxCpltCallback+0x7c>)
  8000514:	785b      	ldrb	r3, [r3, #1]
  8000516:	3b30      	subs	r3, #48	; 0x30
  8000518:	60fb      	str	r3, [r7, #12]
 
 
-	HAL_UART_Transmit(&huart2, Tx_Buffer, strlen((char*)Tx_Buffer), 1000); // Cuando reciba los 8 bits trasmite nuestro mensaje
+	HAL_UART_Transmit(&huart2, Tx_Buffer, strlen((char*)Tx_Buffer), 1000); // Cuando reciba los 2 bits trasmite nuestro mensaje
  800051a:	480d      	ldr	r0, [pc, #52]	; (8000550 <HAL_UART_RxCpltCallback+0x7c>)
  800051c:	f7ff fe54 	bl	80001c8 <strlen>
  8000520:	4603      	mov	r3, r0
@@ -420,7 +420,7 @@ void HAL_UART_RxCpltCallback (UART_HandleTypeDef *huart) //Reconoce cuando la re
  800052a:	4808      	ldr	r0, [pc, #32]	; (800054c <HAL_UART_RxCpltCallback+0x78>)
  800052c:	f003 fcf8 	bl	8003f20 <HAL_UART_Transmit>
 
-	htim2.Instance->CCR2 = 15000;
+	htim2.Instance->CCR2 = 15000; // configuracion del PWM
  8000530:	4b08      	ldr	r3, [pc, #32]	; (8000554 <HAL_UART_RxCpltCallback+0x80>)
  8000532:	681b      	ldr	r3, [r3, #0]
  8000534:	f643 2298 	movw	r2, #15000	; 0x3a98
